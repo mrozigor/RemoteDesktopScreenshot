@@ -15,6 +15,8 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.imageio.ImageIO;
 
@@ -32,7 +34,7 @@ public class RemoteDesktopServer {
 	 * Class providing service of remote desktop for a single TCP request.
 	 * 
 	 */
-	private static class ServiceThread extends Thread {
+	private static class ServiceThread implements Runnable {
 		private Socket client;
 
 		public ServiceThread(Socket client) {
@@ -86,12 +88,15 @@ public class RemoteDesktopServer {
 			System.err.println("Unavailable listening port: 4000.");
 			System.exit(1);
 		}
+		ExecutorService executor = Executors.newFixedThreadPool(10);
 		try {
 			while (listening) {
 				clientSocket = serverSocket.accept();
-				new ServiceThread(clientSocket).start();
+				Runnable service = new ServiceThread(clientSocket);
+				executor.execute(service);
 			}
 			serverSocket.close();
+			executor.shutdown();
 		} catch (IOException e) {
 			System.err.println("Accept failed.");
 			System.exit(1);
