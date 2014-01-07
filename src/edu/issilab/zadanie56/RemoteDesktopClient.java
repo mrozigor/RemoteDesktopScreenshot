@@ -1,33 +1,68 @@
-/**
- * 
- */
 package edu.issilab.zadanie56;
 
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.net.UnknownHostException;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 
-/**
- * @author Igor Mróz
- *
- */
-public class RemoteDesktopClient {
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JButton;
+import java.awt.Font;
+import javax.swing.JLabel;
+
+public class RemoteDesktopClient extends JFrame {
+
+	private JPanel mainFrame;
+
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
-		try {
-			DataInputStream stdIn = new DataInputStream(System.in);
-			String fromUser;			
-			System.out.println("Correct commands: shot [jpg, jpeg, bmp, wbmp, png, gif], exit.");
-			System.out.println("Command: ");
-			while ((fromUser = stdIn.readLine()) != null) {
-				new ProcessRequest("localhost", 4000).process(fromUser, stdIn);
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					RemoteDesktopClient frame = new RemoteDesktopClient();
+					frame.setVisible(true);
+					//TODO
+					//Path - path and file name pattern; Format - picture format; Interval - screenshoot requests interval;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-			stdIn.close();
-		} catch (UnknownHostException e) {
-			System.err.println("Nie znalaz³em hosta");
-			System.exit(1);
-		} catch (IOException e) {
-			System.err.println("Nie mogê znaleŸæ po³¹czenia z hostem");
-			System.exit(1);
-		}		
+		});
 	}
+
+	/**
+	 * Create the frame.
+	 */
+	public RemoteDesktopClient() {
+		setTitle("Remote Desktop Screenshot Client");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 600);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JButton pathButton = new JButton("Path");
+		menuBar.add(pathButton);
+		
+		JButton formatButton = new JButton("Format");
+		menuBar.add(formatButton);
+		
+		JButton intervalButton = new JButton("Interval");
+		menuBar.add(intervalButton);
+		
+		JButton startButton = new JButton("Start");
+		startButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		menuBar.add(startButton);
+		
+		JLabel lblCurrentPictureDate = new JLabel("   Current picture date");
+		menuBar.add(lblCurrentPictureDate);
+		mainFrame = new JPanel();
+		mainFrame.setBorder(new EmptyBorder(5, 5, 5, 5));
+		mainFrame.setLayout(new BorderLayout(0, 0));
+		setContentPane(mainFrame);
+	}
+
 }
