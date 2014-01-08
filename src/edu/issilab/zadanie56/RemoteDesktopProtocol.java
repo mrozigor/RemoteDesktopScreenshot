@@ -8,6 +8,7 @@ import java.io.PrintStream;
 
 /**
  * @author Igor
+ * @author Marcel
  * 
  */
 public class RemoteDesktopProtocol {
@@ -18,11 +19,12 @@ public class RemoteDesktopProtocol {
 		if ((format = getFormat(fromUser)) != null) {
 			out.println(format);
 			out.flush();
-			System.out.println("Where save the file? (Ex. C:\\shot.jpg)");
+			System.out.println("Where save the file? (Ex. C:\\shot.jpg):");
 			FileOutputStream file = new FileOutputStream(stdIn.readLine());
 			while ((b = in.read())  != -1) {
 				file.write(b);
 			}
+			System.out.println("Finish!\n");
 			file.close();
 		}
 	}

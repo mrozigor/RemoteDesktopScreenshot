@@ -10,6 +10,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class RemoteDesktopClient extends JFrame {
 
@@ -44,15 +46,39 @@ public class RemoteDesktopClient extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JButton pathButton = new JButton("Path");
+		pathButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//TODO
+			}
+		});
 		menuBar.add(pathButton);
 		
 		JButton formatButton = new JButton("Format");
+		formatButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//TODO
+			}
+		});
 		menuBar.add(formatButton);
 		
 		JButton intervalButton = new JButton("Interval");
+		intervalButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//TODO
+			}
+		});
 		menuBar.add(intervalButton);
 		
 		JButton startButton = new JButton("Start");
+		startButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				//TODO 
+			}
+		});
 		startButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		menuBar.add(startButton);
 		
@@ -65,6 +91,8 @@ public class RemoteDesktopClient extends JFrame {
 		mainFrame.setBorder(new EmptyBorder(5, 5, 5, 5));
 		mainFrame.setLayout(new BorderLayout(0, 0));
 		setContentPane(mainFrame);
+		
 	}
+	
 
 }
