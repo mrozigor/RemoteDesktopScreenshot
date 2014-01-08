@@ -21,6 +21,7 @@ import java.awt.event.MouseEvent;
 public class RemoteDesktopClient extends JFrame {
 
 	private JPanel mainFrame;
+	private ClientPreferences preferences = new ClientPreferences();
 
 	/**
 	 * Launch the application.
@@ -55,9 +56,12 @@ public class RemoteDesktopClient extends JFrame {
 		pathButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JFileChooser savepath = new JFileChooser();
+				JFileChooser savepath = new JFileChooser(); 
 				try {
 					savepath.showSaveDialog(null);
+					preferences.setPath(savepath.getSelectedFile().getAbsolutePath());
+					System.out.println(savepath.getSelectedFile().getAbsolutePath());
+					
 				} catch(HeadlessException err) {
 					// Todo okienko MessageBox
 				}
@@ -65,15 +69,6 @@ public class RemoteDesktopClient extends JFrame {
 			}
 		});
 		menuBar.add(pathButton);
-		
-		JButton formatButton = new JButton("Format");
-		formatButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//TODO
-			}
-		});
-		menuBar.add(formatButton);
 		
 		JButton intervalButton = new JButton("Interval");
 		intervalButton.addMouseListener(new MouseAdapter() {

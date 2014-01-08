@@ -7,7 +7,14 @@ package edu.issilab.zadanie56;
  * @author Igor
  *
  */
+
 public class ClientPreferences {
+	
+	private String path = "";
+	private String nameFormat = "DD-MM-YYYY hh:mm";
+	private String pictureFormat = "png";
+	private int interval = 5000; //ms
+	
 	public String getPath() {
 		return path;
 	}
@@ -32,8 +39,5 @@ public class ClientPreferences {
 	public void setInterval(int interval) {
 		this.interval = interval;
 	}
-	private String path = "C:\\";
-	private String nameFormat = "DD-MM-YYYY hh:mm";
-	private String pictureFormat = "png";
-	private int interval = 5000; //ms
+
 }
