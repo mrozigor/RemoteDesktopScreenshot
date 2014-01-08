@@ -23,7 +23,7 @@ public class RemoteDesktopClient extends JFrame {
 
 	private JPanel mainFrame;
 	private IntervalBox intervalBox = new IntervalBox(); 
-	private ClientPreferences preferences = new ClientPreferences();
+	protected ClientPreferences preferences = new ClientPreferences();
 	private boolean startStopChooser = true;
 
 	/**
@@ -125,6 +125,10 @@ public class RemoteDesktopClient extends JFrame {
 		mainFrame.setLayout(new BorderLayout(0, 0));
 		setContentPane(mainFrame);
 		
+	}
+	
+	public ClientPreferences getPreferences() {
+		return preferences;
 	}
 	
 
