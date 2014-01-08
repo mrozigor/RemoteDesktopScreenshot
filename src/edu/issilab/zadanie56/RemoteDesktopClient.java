@@ -21,6 +21,7 @@ import java.awt.event.MouseEvent;
 public class RemoteDesktopClient extends JFrame {
 
 	private JPanel mainFrame;
+	private IntervalBox intervalBox = new IntervalBox(); 
 	private ClientPreferences preferences = new ClientPreferences();
 
 	/**
@@ -74,7 +75,7 @@ public class RemoteDesktopClient extends JFrame {
 		connectionButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//TODO
+				
 			}
 		});
 		menuBar.add(connectionButton);
@@ -84,7 +85,7 @@ public class RemoteDesktopClient extends JFrame {
 		intervalButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//TODO
+				intervalBox.show();
 			}
 		});
 		menuBar.add(intervalButton);
