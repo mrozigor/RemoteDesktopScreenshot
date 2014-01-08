@@ -2,14 +2,19 @@ package edu.issilab.zadanie56;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.HeadlessException;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JButton;
+
 import java.awt.Font;
+
 import javax.swing.JLabel;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -50,7 +55,13 @@ public class RemoteDesktopClient extends JFrame {
 		pathButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//TODO
+				JFileChooser savepath = new JFileChooser();
+				try {
+					savepath.showSaveDialog(null);
+				} catch(HeadlessException err) {
+					// Todo okienko MessageBox
+				}
+				
 			}
 		});
 		menuBar.add(pathButton);
