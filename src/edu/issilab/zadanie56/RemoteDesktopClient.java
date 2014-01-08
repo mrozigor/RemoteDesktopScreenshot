@@ -24,6 +24,7 @@ public class RemoteDesktopClient extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * @author Marcel
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
