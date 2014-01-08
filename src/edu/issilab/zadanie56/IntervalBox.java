@@ -21,6 +21,7 @@ public class IntervalBox extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	ClientPreferences preferences;
 
 	/**
 	 * Launch the application.
@@ -80,6 +81,11 @@ public class IntervalBox extends JFrame {
 			}
 		});
 		contentPane.add(btnSetValue, BorderLayout.SOUTH);
+	}
+	
+	public IntervalBox(ClientPreferences preferences) {
+		this();
+		this.preferences = preferences;
 	}
 
 }

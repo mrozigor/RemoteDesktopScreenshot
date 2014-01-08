@@ -22,7 +22,7 @@ import javax.swing.SwingConstants;
 public class RemoteDesktopClient extends JFrame {
 
 	private JPanel mainFrame;
-	private IntervalBox intervalBox = new IntervalBox(); 
+	private IntervalBox intervalBox; 
 	protected ClientPreferences preferences = new ClientPreferences();
 	private boolean startStopChooser = true;
 
@@ -87,6 +87,7 @@ public class RemoteDesktopClient extends JFrame {
 		intervalButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				intervalBox = new IntervalBox(preferences);
 				intervalBox.show();
 			}
 		});
