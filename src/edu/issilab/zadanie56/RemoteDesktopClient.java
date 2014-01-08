@@ -24,8 +24,7 @@ public class RemoteDesktopClient extends JFrame {
 				try {
 					RemoteDesktopClient frame = new RemoteDesktopClient();
 					frame.setVisible(true);
-					//TODO
-					//Path - path and file name pattern; Format - picture format; Interval - screenshoot requests interval;
+					//TODO Path - path and file name pattern; Format - picture format; Interval - screenshot requests interval;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -56,6 +55,9 @@ public class RemoteDesktopClient extends JFrame {
 		JButton startButton = new JButton("Start");
 		startButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		menuBar.add(startButton);
+		
+		JLabel lblStatusStoped = new JLabel("   Status: Stoped");
+		menuBar.add(lblStatusStoped);
 		
 		JLabel lblCurrentPictureDate = new JLabel("   Current picture date");
 		menuBar.add(lblCurrentPictureDate);
