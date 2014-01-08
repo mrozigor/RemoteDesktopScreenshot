@@ -24,6 +24,7 @@ public class RemoteDesktopClient extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * @author Igor
 	 * @author Marcel
 	 */
 	public static void main(String[] args) {
@@ -64,6 +65,15 @@ public class RemoteDesktopClient extends JFrame {
 				
 			}
 		});
+		
+		JButton connectionButton = new JButton("Connection");
+		connectionButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//TODO
+			}
+		});
+		menuBar.add(connectionButton);
 		menuBar.add(pathButton);
 		
 		JButton formatButton = new JButton("Format");
@@ -88,7 +98,7 @@ public class RemoteDesktopClient extends JFrame {
 		startButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				//TODO 
+				new ProcessRequest();
 			}
 		});
 		startButton.setFont(new Font("Tahoma", Font.BOLD, 11));

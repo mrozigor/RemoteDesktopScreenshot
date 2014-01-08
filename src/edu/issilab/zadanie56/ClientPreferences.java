@@ -8,6 +8,18 @@ package edu.issilab.zadanie56;
  *
  */
 public class ClientPreferences {
+	public String getHost() {
+		return host;
+	}
+	public void setHost(String host) {
+		this.host = host;
+	}
+	public int getPort() {
+		return port;
+	}
+	public void setPort(int port) {
+		this.port = port;
+	}
 	public String getPath() {
 		return path;
 	}
@@ -20,12 +32,6 @@ public class ClientPreferences {
 	public void setNameFormat(String nameFormat) {
 		this.nameFormat = nameFormat;
 	}
-	public String getPictureFormat() {
-		return pictureFormat;
-	}
-	public void setPictureFormat(String pictureFormat) {
-		this.pictureFormat = pictureFormat;
-	}
 	public int getInterval() {
 		return interval;
 	}
@@ -34,6 +40,7 @@ public class ClientPreferences {
 	}
 	private String path = "C:\\";
 	private String nameFormat = "DD-MM-YYYY hh:mm";
-	private String pictureFormat = "png";
 	private int interval = 5000; //ms
+	private String host = "localhost";
+	private int port = 4000;
 }
