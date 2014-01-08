@@ -28,10 +28,8 @@ public class ProcessRequest {
 	public void process(String fromUser, DataInputStream stdIn) {
 		try {
 			Socket socket = new Socket(host, port);
-			RemoteDesktopProtocol protocol = new RemoteDesktopProtocol();
 			BufferedInputStream in = new BufferedInputStream(socket.getInputStream());
 			PrintStream out = new PrintStream(socket.getOutputStream());
-			protocol.processRequest(in, out, fromUser, stdIn);
 			System.out.println("Command: ");
 			socket.close();	
 			out.close();
