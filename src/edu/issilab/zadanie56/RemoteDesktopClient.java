@@ -61,7 +61,7 @@ public class RemoteDesktopClient extends JFrame {
 				try {
 					savepath.showSaveDialog(null);
 					preferences.setPath(savepath.getSelectedFile().getAbsolutePath());
-					System.out.println(savepath.getSelectedFile().getAbsolutePath());
+					System.out.println(preferences.getPath());
 					
 				} catch(HeadlessException err) {
 					// Todo okienko MessageBox
