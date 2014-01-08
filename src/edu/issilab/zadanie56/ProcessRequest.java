@@ -14,9 +14,10 @@ import java.net.UnknownHostException;
 public class ProcessRequest {
 	String host;
 	int port;
+	ClientPreferences preferences;
 	
-	public ProcessRequest() {
-		
+	public ProcessRequest(ClientPreferences preferences) {
+		this.preferences = preferences;
 	}
 	
 	public ProcessRequest(String host, int port) {
@@ -27,10 +28,8 @@ public class ProcessRequest {
 	public void process(String fromUser, DataInputStream stdIn) {
 		try {
 			Socket socket = new Socket(host, port);
-			RemoteDesktopProtocol protocol = new RemoteDesktopProtocol();
 			BufferedInputStream in = new BufferedInputStream(socket.getInputStream());
 			PrintStream out = new PrintStream(socket.getOutputStream());
-			protocol.processRequest(in, out, fromUser, stdIn);
 			System.out.println("Command: ");
 			socket.close();	
 			out.close();

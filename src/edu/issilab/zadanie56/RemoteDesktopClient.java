@@ -17,12 +17,14 @@ import javax.swing.JLabel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.SwingConstants;
 
 public class RemoteDesktopClient extends JFrame {
 
 	private JPanel mainFrame;
 	private IntervalBox intervalBox = new IntervalBox(); 
 	private ClientPreferences preferences = new ClientPreferences();
+	private boolean startStopChooser = true;
 
 	/**
 	 * Launch the application.
@@ -90,21 +92,34 @@ public class RemoteDesktopClient extends JFrame {
 		});
 		menuBar.add(intervalButton);
 		
-		JButton startButton = new JButton("Start");
+		final JLabel statusLabel = new JLabel("   Status: Stoped");
+		final JLabel currentDateLabel = new JLabel("   Current picture date");
+		
+		final JButton startButton = new JButton("Start");
+		startButton.setHorizontalAlignment(SwingConstants.RIGHT);
 		startButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				new ProcessRequest();
+				if(preferences.getInterval() != 0) {
+					if(startStopChooser == true) {
+						startButton.setText("Stop");
+						statusLabel.setText("   Status: Started");
+						startStopChooser = false;
+					} else {
+						startButton.setText("Start");
+						statusLabel.setText("   Status: Stoped");
+						startStopChooser = true;
+					}
+				}
+				new ProcessRequest(preferences);
 			}
 		});
 		startButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		menuBar.add(startButton);
 		
-		JLabel lblStatusStoped = new JLabel("   Status: Stoped");
-		menuBar.add(lblStatusStoped);
+		menuBar.add(statusLabel);
+		menuBar.add(currentDateLabel);
 		
-		JLabel lblCurrentPictureDate = new JLabel("   Current picture date");
-		menuBar.add(lblCurrentPictureDate);
 		mainFrame = new JPanel();
 		mainFrame.setBorder(new EmptyBorder(5, 5, 5, 5));
 		mainFrame.setLayout(new BorderLayout(0, 0));

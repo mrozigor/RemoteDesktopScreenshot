@@ -53,8 +53,8 @@ public class ClientPreferences {
 		return interval;
 	}
 
-	public void setInterval(int interval) {
-		this.interval = interval;
+	public void setInterval(int ms) {
+		this.interval = ms;
 	}
 
 }
