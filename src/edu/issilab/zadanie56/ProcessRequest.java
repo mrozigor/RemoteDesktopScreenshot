@@ -14,9 +14,10 @@ import java.net.UnknownHostException;
 public class ProcessRequest {
 	String host;
 	int port;
+	ClientPreferences preferences;
 	
-	public ProcessRequest() {
-		
+	public ProcessRequest(ClientPreferences preferences) {
+		this.preferences = preferences;
 	}
 	
 	public ProcessRequest(String host, int port) {
